@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  labels:
+    name: kuard-rs-test
+  name: kuard-rs-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuard-rs-test-pod
+  template:
+    metadata:
+      labels:
+        app: kuard-rs-test-pod
+    spec:
+      containers:
+      - image: gcr.io/kuar-demo/kuard-amd64:1
+        name: kuard
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 500m
+
