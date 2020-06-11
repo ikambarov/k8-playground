@@ -6,10 +6,15 @@ metadata:
    name: fortune-pod
 spec:
   containers:
-  - image: centos
+  - image: centos:7
     name: html-generator
     stdin: true
     tty: true 
+    command: ["/bin/bash", "-c"]
+    args: 
+      - yum install epel-release -y;
+        yum install fortune-mod -y;
+        while true; do fortune > /html/index.html; sleep 5; done;
     volumeMounts:
     - name: html-volume
       mountPath: /html
