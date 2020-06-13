@@ -13,7 +13,7 @@ spec:
       valueFrom:
         configMapKeyRef:
           name: nginx-config
-          key: proxu-status
+          key: proxy-status
     - name: PROXY_PORT
       valueFrom:
         configMapKeyRef:
