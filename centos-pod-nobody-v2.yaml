@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: centos-pod-nobody-v2
+  name: centos-pod-nobody-v2
+spec:
+  securityContext:
+    runAsNonRoot: true
+  containers:
+  - image: centos
+    name: centos
+    stdin: true
+    tty: true
+
