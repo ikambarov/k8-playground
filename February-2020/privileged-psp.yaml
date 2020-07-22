@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: privileged-psp
+spec:
+  privileged: true
+  runAsUser:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  volumes:
+  - '*'
+

@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-sts-svc
+  labels:
+    app: web-app-sts
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: web-app-sts
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: web-app-sts
+spec:
+  serviceName: web-app-sts-svc
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: web-app-sts
+    spec:
+      containers:
+      - name: web-app
+        image: ikambarov/web-app:1.0.0
+        ports:
+        - name: http
+          containerPort: 80
+        volumeMounts:
+        - name: data
+          mountPath: /data
+  updateStrategy:
+    type: RollingUpdate
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      resources:
+        requests:
+          storage: 1Gi
+      accessModes:
+      - ReadWriteOnce
+

@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuard-sts-svc
+  labels:
+    app: kuard-sts
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: kuard-sts
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: kuard-sts
+spec:
+  serviceName: kuard-sts-svc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kuard-sts
+    spec:
+      containers:
+      - name: kuard
+        image: gcr.io/kuar-demo/kuard-amd64:1
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts:
+        - name: data
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      resources:
+        requests:
+          storage: 1Gi
+      accessModes:
+      - ReadWriteOnce
+

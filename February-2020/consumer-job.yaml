@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Job
+metadata:
+  name: consumer-job
+  labels:
+    job: consumer-job
+spec:
+  parallelism: 5
+  template:
+    metadata:
+      labels:
+        app: consumer-job-pod
+      spec:
+        containers:
+          - name: worker
+            image:  gcr.io/kuar-demo/kuard-amd64:1
+            imagePullPolicy: Always
+            args:
+            - "--keygen-enable"
+            - "--keygen-exit-on-complete"
+            - "--keygen-memq-server=http://queue:8080/memq/server"
+            - "--keygen-memq-queue=keygen"
+        restartPolicy: OnFailure
+

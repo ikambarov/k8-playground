@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: kuard-pod-lp-enabled
+  name: kuard-pod-lp-enabled
+spec:
+  containers:
+  - image: gcr.io/kuar-demo/kuard-amd64:1
+    name: kuard
+    ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
+    livenessProbe:
+      httpGet:
+        path: /healthy
+        port: 8080
+      initialDelaySeconds: 5
+      timeoutSeconds: 1
+      periodSeconds: 10
+      failureThreshold: 3
