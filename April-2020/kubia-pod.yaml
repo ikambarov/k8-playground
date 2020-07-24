@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: kubia-pod
+  name: kubia-pod
+spec:
+  containers:
+    - name: kubia
+      image: luksa/kubia
+      ports:
+      - name: http
+        containerPort: 8080
+      readinessProbe:
+        exec:
+          command:
+          - ls
+          - /var/ready
+
