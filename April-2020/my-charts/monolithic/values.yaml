@@ -1,0 +1,11 @@
+# Default values for monolithic.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nginx_image:
+  repository: nginx
+  tag: 1.19
+
+redis_image:
+  repository: redis
+  tag: 6.0

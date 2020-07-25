@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}-{{ .Chart.Version }}
+spec:
+  containers:
+  - image: {{ .Values.nginx_image.repository }}:{{ .Values.nginx_image.tag }}
+    name: nginx
+  - image: {{ .Values.redis_image.repository }}:{{ .Values.redis_image.tag }}
+    name: redis
