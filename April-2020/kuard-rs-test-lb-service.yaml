@@ -13,4 +13,5 @@ spec:
   selector:
     app: kuard-rs-test-pod
   type: LoadBalancer
+  externalTrafficPolicy: Local
 
