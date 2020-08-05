@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: mysql-rs
+  labels:
+    app: mysql-rs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-rs-pod
+  template:
+    metadata:
+      labels:
+        app: mysql-rs-pod
+    spec:
+      volumes:
+      - name: db-volume
+        persistentVolumeClaim:
+          claimName: db-pvc
+      containers:
+      - name: mysql
+        image: mysql:5.6
+        env:
+          # Test, use secret in prod
+        - name: MYSQL_ROOT_PASSWORD
+          value: MyV3ryS3curePa55
+        livenessProbe:
+          tcpSocket:
+            port: 3306
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: db-volume
+          mountPath: /var/lib/mysql
+
