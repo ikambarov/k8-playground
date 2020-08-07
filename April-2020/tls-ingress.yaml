@@ -4,7 +4,7 @@ metadata:
   name: tls-ingress
 spec:
   tls:
-  - secretName: tls-ingress
+  - secretName: ingress-tls
   backend:
     serviceName: nginx-service
     servicePort: 80
