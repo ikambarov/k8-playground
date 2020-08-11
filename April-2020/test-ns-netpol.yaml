@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-ns-netpol
+spec:
+  podSelector:
+    matchLabels:
+      env: qa
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          env: dev-johns
+
