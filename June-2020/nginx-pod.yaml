@@ -3,11 +3,10 @@ kind: Pod
 metadata:
   labels:
     run: nginx-pod
-    dev: true
-    env: dev
-    team: myteam
   name: nginx-pod
 spec:
+  nodeSelector:
+    az: az1
   containers:
   - image: nginx
     name: nginx
