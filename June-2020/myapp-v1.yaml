@@ -10,8 +10,8 @@ spec:
     name: kuard
     resources:
       requests:
-        # 500m = 0.5 CPU
-        cpu: "500m"
+        # 50m = 0.05 CPU
+        cpu: "50m"
         memory: "128Mi"
     ports:
     - containerPort: 8080
