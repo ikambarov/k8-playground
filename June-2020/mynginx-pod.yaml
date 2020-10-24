@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mynginx-pod
+spec:
+  imagePullSecrets:
+  - name: mydockerhubcreds
+  containers:
+  - image: ikambarov/customubuntu
+    name: mynginx
+
