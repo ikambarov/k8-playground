@@ -1,0 +1,10 @@
+replicas: 2 
+
+image:
+  repository: nginx
+ 
+port:
+  number: 80
+  name: http
+  protocol: TCP
+
