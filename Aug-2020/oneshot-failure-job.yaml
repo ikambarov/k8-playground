@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: oneshot-failure-job
+  labels:
+    job: oneshot-failure-job
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 120
+  template:
+    metadata:
+      labels:
+        app: oneshot-failure-job-pod
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: kuard
+        image:  gcr.io/kuar-demo/kuard-amd64:1
+        args:
+        - "--keygen-enable"
+        - "--keygen-exit-on-complete"
+        - "--keygen-exit-code=1"
+        - "--keygen-num-to-gen=3"
+        ports:
+        - containerPort: 8080
+          name: http
+
