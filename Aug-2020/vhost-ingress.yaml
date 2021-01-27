@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: vhost-ingress
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: test-service1
+          servicePort: 80
+      - path: /test
+        backend:
+          serviceName: test-service2
+          servicePort: 80
+  - host: test3.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: test-service3
+          servicePort: 80
+  - host: testwebsite.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: test-service4
+          servicePort: 80
+
