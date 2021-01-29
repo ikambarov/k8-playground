@@ -8,6 +8,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Delete
   storageClassName: nfs
   capacity:
     storage: 1Gi
