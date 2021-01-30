@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tls-ingress
+spec:
+  tls:
+  - secretName: tls-ingress-secret
+  backend:
+    serviceName: nginx-service
+    servicePort: 80
+
