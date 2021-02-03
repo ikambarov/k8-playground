@@ -1,9 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: web-app
   labels:
     app: web-app
-  name: web-app
+  annotations:
+    kubernetes.io/change-cause: "Update to web-app 1.5.1"
 spec:
   replicas: 3
   selector:
@@ -20,5 +22,5 @@ spec:
         app: web-app
     spec:
       containers:
-      - image: ikambarov/web-app:1.0.1
+      - image: ikambarov/web-app:1.5.1
         name: web-app
