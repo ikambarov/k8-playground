@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dev-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    acme.cert-manager.io/http01-edit-in-place: "true"
+spec:
+  tls:
+  - hosts:
+    - dev.example.com
+    secretName: ingress-tls-secret
+  rules:
+  - host: dev.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: test-service1
+          servicePort: 80
+
