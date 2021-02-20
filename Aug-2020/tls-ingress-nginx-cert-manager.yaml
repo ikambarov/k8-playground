@@ -4,24 +4,19 @@ metadata:
   name: tls-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/ssl-redirect: "false"
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   tls:
   - hosts:
-    - app1.evolvecybertraining.com
-    - app2.evolvecybertraining.com
+    - app1.example.com
     secretName: app-tls
   rules:
-  - host: app1.evolvecybertraining.com
+  - host: app1.example.com
     http:
       paths:
       - backend:
           serviceName: test-service1
-          servicePort: 80
-  - host: app2.evolvecybertraining.com
-    http:
-      paths:
-      - backend:
-          serviceName: test-service2
           servicePort: 80
 
