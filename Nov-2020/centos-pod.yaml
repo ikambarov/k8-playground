@@ -2,10 +2,12 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    run: centos-pod
+    app: centos-pod
   name: centos-pod
   namespace: default
 spec:
+  nodeSelector:
+    kubernetes.io/hostname: gke-cluster-1-default-pool-d8b544e3-0nz8
   containers:
   - image: centos
     name: centos
