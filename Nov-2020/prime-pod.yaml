@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: prime-pod
+  name: prime-pod
+spec:
+  imagePullSecrets:
+  - name: mydockerhubsecret
+  containers:
+  - image: pullai2hew/prime
+    name: prime-pod
