@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-allow-80-netpol
+spec:
+  podSelector:
+    matchLabels:
+      env: qa
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          env: test
+    ports:
+    - protocol: TCP
+      port: 80
+
