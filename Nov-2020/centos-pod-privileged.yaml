@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: centos-pod-privileged
+  name: centos-pod-privileged
+spec:
+  containers:
+  - image: centos
+    name: centos
+    stdin: true
+    tty: true
+    securityContext:
+      privileged: true
+
