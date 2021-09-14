@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tls-ingress
+spec:
+  tls:
+  - hosts:
+    - app1.evolvecybertraining.com
+    secretName: ingress-tls
+  rules:
+  - host: app1.evolvecybertraining.com
+    http:
+      paths:
+      - backend:
+          serviceName: test-service1
+          servicePort: 80
+
