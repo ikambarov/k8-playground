@@ -1,0 +1,6 @@
+apiVersion: v2
+name: Web
+description: A Helm chart to install Web Server
+type: application
+version: 0.1.0
+appVersion: "1.21"
