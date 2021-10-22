@@ -17,4 +17,7 @@ spec:
       containers:
       - image: gcr.io/kuar-demo/kuard-amd64:1
         name: kuard
+        resources:
+          requests:
+            cpu: 500m
 
