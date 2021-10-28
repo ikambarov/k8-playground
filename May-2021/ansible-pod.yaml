@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: ansible-pod
+  name: ansible-pod
+spec:
+  containers:
+  - args:
+    - sleep
+    - "100000"
+    env:
+    - name: ANSIBLE_HOST_KEY_CHECKING
+      valueFrom:
+        configMapKeyRef:
+          name: ansible-configmap
+          key: key-checking
+    image: ikambarov/ansible
+    name: ansible-pod
