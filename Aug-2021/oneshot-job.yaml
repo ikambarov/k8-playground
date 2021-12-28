@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: oneshot-job
+spec:
+spec:
+  completions: 10
+  parallelism: 5
+  selector:
+  template:
+    metadata:
+      labels:
+        app: oneshot-job-pod
+    spec:
+      containers:
+      - args:
+        - --keygen-enable
+        - --keygen-exit-on-complete
+        - --keygen-num-to-gen
+        - "10"
+        image: gcr.io/kuar-demo/kuard-amd64:1
+        name: oneshot
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+      restartPolicy: OnFailure   
+
