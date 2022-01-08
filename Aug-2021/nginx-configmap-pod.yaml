@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-configmap-pod
+  name: nginx-configmap-pod
+spec:
+  containers:
+  - image: nginx
+    name: nginx-configmap-pod
+    volumeMounts:
+    - name: configmap-volume
+      mountPath: /etc/nginx/conf.d/default.conf
+      subPath: nginx-proxy.conf
+    ports:
+    - containerPort: 80
+  volumes:
+  - name: configmap-volume
+    configMap:
+      name: nginx-proxy
