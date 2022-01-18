@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: objects-quota
+spec:
+  hard:
+    count/deployments.apps: 200
+    count/replicasets.apps: 1000
+    count/statefulsets.apps: 50
+    count/jobs.batch: 1000
+    count/cronjobs.batch: 3000
+    replicationcontrollers: 500
+    pods: 5000
+    secrets: 1000
+    configmaps: 1000
+    persistentvolumeclaims: 500
+    services: 500
+    services.loadbalancers: 100
+    services.nodeports: 500
+    ssd.storageclass.storage.k8s.io/persistentvolumeclaims: 20
+
+
