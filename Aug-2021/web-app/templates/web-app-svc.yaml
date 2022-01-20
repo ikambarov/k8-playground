@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    svc: {{ .Release.Name }}-svc
+  name: {{ .Release.Name }}-svc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: {{ .Release.Name }}-deploy
+  type: NodePort
