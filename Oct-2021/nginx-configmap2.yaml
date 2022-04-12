@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-configmap2
+  name: nginx-configmap2
+spec:
+  containers:
+  - image: nginx:1.11 
+    name: nginx
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/nginx/conf.d/default.conf
+      subPath: nginx-proxy.conf
+  volumes:
+  - name: config-volume
+    configMap:
+      name: nginx-config
+
