@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-configmap
+  name: nginx-configmap
+spec:
+  containers:
+  - env:
+    - name: NGINX_PORT
+      valueFrom:
+        configMapKeyRef:
+          name: nginx-env
+          key: port
+    image: nginx
+    name: nginx
