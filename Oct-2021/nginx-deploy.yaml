@@ -3,9 +3,11 @@ kind: Deployment
 metadata:
   labels:
     app: ngins-deploy
+  annotations:
+    kubernetes.io/change-cause: "Downgrade to v1.20"
   name: ngins-deploy
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: ngins-deploy
