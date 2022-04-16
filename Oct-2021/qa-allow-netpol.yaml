@@ -11,4 +11,7 @@ spec:
     - podSelector:
         matchLabels:
           env: qa
+    ports:
+    - protocol: TCP
+      port: 80
 
