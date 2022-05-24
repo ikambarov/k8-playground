@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx-rc-pod
+  name: nodeport-service
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    nodePort: 30029
+  selector:
+    app: nginx-rc-pod
+  type: NodePort
