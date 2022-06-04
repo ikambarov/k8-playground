@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cidr-netpol
+spec:
+  podSelector:
+    matchLabels:
+      env: test
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 10.24.1.25/32
+
