@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: objects-quota
+spec:
+  hard:
+    count/deployments.apps: 50
+    count/replicasets.apps: 100
+    count/statefulsets.apps: 50
+    count/jobs.batch: 100
+    count/cronjobs.batch: 25
+    replicationcontrollers: 10
+    pods: 1000
+    secrets: 100
+    configmaps: 100
+    persistentvolumeclaims: 50
+    services: 500
+    services.loadbalancers: 10
+    services.nodeports: 500
+
