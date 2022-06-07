@@ -1,0 +1,5 @@
+replicas: 2
+repo: ikambarov
+image: web-app
+tag: 1.0.0
+port: 80
