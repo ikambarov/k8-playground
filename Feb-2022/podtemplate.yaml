@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: agent
+  name: agent
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+        matchExpressions:
+        - key: component
+          operator: In
+          values:
+          - jenkins-master
+          topologyKey: "kubernetes.io/hostname"
+  containers:
+  - image: jenkinsagent
+    name: agent
