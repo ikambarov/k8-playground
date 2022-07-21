@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-node1-pod
+  name: nginx-node1-pod
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: gke-cluster-1-default-pool-d9101de3-3msx
+  containers:
+  - image: nginx
+    name: nginx-node1-pod
