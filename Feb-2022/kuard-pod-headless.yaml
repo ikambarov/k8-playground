@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kuard-pod-headless
+  labels:
+    app: kuard-pod-headless
+spec:
+  hostname: kuard-pod-headless
+  subdomain: kuard-pod-headless-service
+  containers:
+  - image: gcr.io/kuar-demo/kuard-amd64:1
+    name: kuard
+    ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
+
