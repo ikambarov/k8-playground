@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: private-pod
+  name: private-pod
+spec:
+  imagePullSecrets:
+    - name: dockerhubcreds 
+  containers:
+  - image: pullai2hew/prime
+    name: private-pod
