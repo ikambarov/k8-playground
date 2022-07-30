@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-deploy
+  name: web-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-deploy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: web-deploy
+    spec:
+      containers:
+      - image: ikambarov/web-app:1.0.0
+        name: web-app
