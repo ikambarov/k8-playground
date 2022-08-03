@@ -1,0 +1,5 @@
+replicas: 1
+image: ikambarov/flaskex
+tag: v1
+port: 5000
+serviceport: 80
