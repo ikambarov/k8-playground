@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: benchmarker-ds
+  labels:
+    app: benchmarker-ds
+spec:
+  selector:
+    matchLabels:
+      app: benchmarker-ds-pod
+  template:
+    metadata:
+      labels:
+        app: benchmarker-ds-pod
+    spec:
+      containers:
+      - image: nginx
+        name: benchmarker
+        command: ["/bin/bash", "-c"]
+        args:
+        - echo -e "\n<br>\n--------\n<br>\n" > /usr/share/nginx/html/index.html;
+          while true; do
+          date >> /usr/share/nginx/html/index.html;
+          dd bs=1M count=10 if=/dev/zero of=~/simple-container-benchmark &>> /usr/share/nginx/html/index.html;
+          echo -e "\n<br>\n--------\n<br>\n" >> /usr/share/nginx/html/index.html;
+          sleep 30; done &
+          nginx -g 'daemon off;'
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+
