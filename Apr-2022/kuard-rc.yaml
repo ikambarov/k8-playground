@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: kuard-rc
+  name: kuard-rc
+spec:
+  replicas: 1
+  selector:
+    app: kuard-rc-pod
+  template:
+    metadata:
+      labels:
+        app: kuard-rc-pod
+    spec:
+      containers:
+      - image: gcr.io/kuar-demo/kuard-amd64:1
+        name: kuard
+
