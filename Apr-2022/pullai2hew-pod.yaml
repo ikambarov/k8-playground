@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pullai2hew-pod
+spec:
+  imagePullSecrets:
+  - name: dockerhubcreds
+  containers:
+  - image: pullai2hew/prime
+    name: pullai2hew-pod
