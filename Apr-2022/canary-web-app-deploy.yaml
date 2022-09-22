@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-app-deploy
+  name: canary-web-app-deploy
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: web-app-deploy
@@ -17,7 +17,7 @@ spec:
         app: web-app-deploy
     spec:
       containers:
-      - image: ikambarov/web-app:1.5.1
+      - image: ikambarov/web-app:2.0.0
         name: web-app
         ports:
         - containerPort: 80
