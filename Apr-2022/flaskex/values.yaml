@@ -1,0 +1,8 @@
+replicas: 1
+repository: "ikambarov"
+image: "flaskex"
+tag: "v1"
+servicetype: "LoadBalancer"
+protocol: "TCP"
+port: 80
+targetport: 5000

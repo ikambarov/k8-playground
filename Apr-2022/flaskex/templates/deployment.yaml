@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deploy
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-deploy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-deploy
+    spec:
+      containers:
+      - image: {{ .Values.repository }}/{{ .Values.image }}:{{ .Values.tag }}
+        name: {{ .Values.image }}
+        ports:
+        - containerPort: {{ .Values.port }}
