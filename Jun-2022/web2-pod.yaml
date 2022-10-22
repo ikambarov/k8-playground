@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web2
+  labels:
+    app: web2
+    team: dev
+spec:
+  containers:
+  - image: nginx
+    name: web2
