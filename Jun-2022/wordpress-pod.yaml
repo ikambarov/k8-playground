@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: wordpress3
+  name: wordpress-pod
+spec:
+  containers:
+  - image: wordpress
+    name: wordpress
+    ports:
+    - containerPort: 80
+  - image: mysql
+    name: mysql
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: blah-blah
+    ports:
+    - containerPort: 3306
