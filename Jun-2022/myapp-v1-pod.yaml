@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: myapp-v1-pod
+  name: myapp-v1-pod
+spec:
+  containers:
+  - image: gcr.io/kuar-demo/kuard-amd64:1
+    name: kuard
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "128Mi"
+    ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
+
