@@ -16,13 +16,7 @@ spec:
       containers:
       - image: busybox
         name: benchmarker
-        - args:
-          - while
-          - true;
-          - do
-          - dd
-          - if=/dev/zero
-          - of=testfile
-          - bs=1M
-          - count=10;
-          - done
+        command: ["/bin/sh", "-c"]
+        args:
+        - while true; do dd if=/dev/zero of=testfile bs=1M count=10; sleep 30; done
+
