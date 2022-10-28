@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: benchmarker-ds
+  labels:
+    app: benchmarker-ds
+spec:
+  selector:
+    matchLabels:
+      app: benchmarker-ds-pod
+  template:
+    metadata:
+      labels:
+        app: benchmarker-ds-pod
+    spec:
+      containers:
+      - image: busybox
+        name: benchmarker
+        - args:
+          - while
+          - true;
+          - do
+          - dd
+          - if=/dev/zero
+          - of=testfile
+          - bs=1M
+          - count=10;
+          - done
