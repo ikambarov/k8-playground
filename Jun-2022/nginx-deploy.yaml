@@ -16,5 +16,5 @@ spec:
         app: nginx-deploy
     spec:
       containers:
-      - image: nginx:1.20
+      - image: nginx:1.21
         name: nginx
