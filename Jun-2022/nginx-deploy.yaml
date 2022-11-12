@@ -9,12 +9,16 @@ spec:
   selector:
     matchLabels:
       app: nginx-deploy
-  strategy: {}
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       labels:
         app: nginx-deploy
     spec:
       containers:
-      - image: nginx:1.21
+      - image: nginx:1.19
         name: nginx
